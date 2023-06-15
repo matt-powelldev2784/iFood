@@ -1,4 +1,4 @@
-# NextJS Food Take Away App
+# NextJs Food Take Away App
 
 #### A food takeaway application built to explore the main features of NextJs.
 

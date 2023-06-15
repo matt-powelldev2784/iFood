@@ -2,7 +2,6 @@ import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from 'next'
-import { useRef } from 'react'
 import { getProviders, signIn } from 'next-auth/react'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '../../api/auth/[...nextauth]'
@@ -12,50 +11,65 @@ import { SmallShopAlt } from 'iconoir-react'
 export default function SignIn({
   providers,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const emailRef = useRef<HTMLInputElement>(null)
-
   const handleEmailSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (emailRef.current) {
+
+    const form = e.target as HTMLFormElement
+    const elements = form.elements as HTMLFormControlsCollection
+    const emailInput = elements.namedItem('email') as HTMLInputElement
+    const email = emailInput.value
+
+    if (email) {
       await signIn('email', {
-        email: emailRef.current.value,
+        email,
         callbackUrl: '/pages/food-menu/food-menu',
       })
     }
   }
 
-  const emailProvider = Object.values(providers).map((provider) => {
+  const emailProvider = Object.values(providers).filter((provider) => {
     if (provider.name === 'Email') {
-      return (
-        <div key={provider.name} className="w-full md:w-11/12 pb-4 text-lg">
-          <form
-            onSubmit={handleEmailSignIn}
-            className="flex flex-col items-center"
-          >
-            <input
-              type="email"
-              ref={emailRef}
-              placeholder="Email address"
-              className="w-full p-2 rounded border"
-            />
-            <Button
-              type="submit"
-              optionalClassNames="w-full p-2 rounded-lg my-2"
-              text={`Sign in with ${provider.name}`}
-            ></Button>
-          </form>
-        </div>
-      )
+      return true
     }
   })
 
-  const oAuthProviders = Object.values(providers).map((provider) => {
-    if (provider.name === 'Email') {
-      return
+  const oAuthProviders = Object.values(providers).filter((provider) => {
+    if (provider.name !== 'Email') {
+      return true
     }
+  })
 
+  const emailProviderJSX = emailProvider.map((provider) => {
     return (
-      <div key={provider.name} className="w-full md:w-11/12 text-lg">
+      <div key={provider.name} className="w-full pb-4 text-lg md:w-11/12">
+        <form
+          onSubmit={handleEmailSignIn}
+          className="flex flex-col items-center"
+        >
+          <label htmlFor="email" className="w-full pl-1 text-base">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email address"
+            className="w-full rounded border p-2 text-lg"
+          />
+
+          <Button
+            type="submit"
+            optionalClassNames="w-full p-2 rounded-lg my-2"
+            text={`Sign in with ${provider.name}`}
+          ></Button>
+        </form>
+      </div>
+    )
+  })
+
+  const oAuthProvidersJSX = oAuthProviders.map((provider) => {
+    return (
+      <div key={provider.name} className="w-full text-lg md:w-11/12">
         <Button
           type="button"
           onClick={() => signIn(provider.id)}
@@ -70,11 +84,11 @@ export default function SignIn({
     <>
       <Navbar />
       <section className="flex min-h-screen justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
-        <div className="sm:w-screen md:w-[400px] max-w-[400px] h-[32rem] flex flex-col items-center justify-center rounded-3xl md:bg-quaternaryGrey shadow-lg md:m-8 p-8">
+        <div className="flex h-[32rem] max-w-[400px] flex-col items-center justify-center rounded-3xl p-8 shadow-lg sm:w-screen md:m-8 md:w-[400px] md:bg-quaternaryGrey">
           <SmallShopAlt className="text-primaryPink" height={125} width={125} />
-          <h1 className="text-3xl pb-5">SIGN IN</h1>
-          {emailProvider}
-          {oAuthProviders}
+          <h1 className="pb-5 text-3xl">SIGN IN</h1>
+          {...emailProviderJSX}
+          {...oAuthProvidersJSX}
         </div>
       </section>
     </>

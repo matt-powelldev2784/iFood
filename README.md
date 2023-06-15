@@ -1,8 +1,7 @@
 # NextJs Food Take Away App
 
-## Description
+#### A food takeaway application built to explore the main features of NextJs.
 
-A food takeaway application built to explore the main features of NextJs.  
 Built with NextJs, TypeScript, Redux, Postgres, Prisma, and TailwindCSS.  
 Utilised NextJs features for SSR, SSG, API creation, dynamic routes, and image
 optimisation.  

@@ -3,7 +3,6 @@ import { TSFoodMenuItem } from '@/ts/interfaces'
 import Image from 'next/image'
 import { addCartItem } from '@/redux/slices/cartSlice'
 import { useAppDispatch } from '@/redux/store/reduxHooks'
-import { InfoEmpty } from 'iconoir-react'
 import { useRouter } from 'next/router'
 import { Button } from '@/components'
 

@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { NavItems } from './NavItems'
 import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
 import { getAuthUser, toggleMobileMenu } from '@/redux/slices/userSlice'
-import { Phone, Menu } from 'iconoir-react'
 import { MobileNav } from '@/components'
 
 export const Navbar = () => {

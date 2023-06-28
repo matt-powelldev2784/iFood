@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
 import { getUserOrders } from '@/redux/slices/ordersSlice'
 import { TSOrderItem, TSOrder } from '@/ts/interfaces'
-import { ClipboardCheck } from 'iconoir-react'
 import { OrderItem } from './OrderItem'
 import { convertToReableDate } from '@/utils/convertToReableDate'
+import Image from 'next/image'
 
 export const Orders = () => {
   const dispatch = useAppDispatch()
@@ -39,42 +39,42 @@ export const Orders = () => {
     return (
       <article
         key={orderId}
-        className="w-screen md:w-full flex justify-center items-center flex-col md:rounded-3xl bg-quaternaryGrey p-6 md:m-3 shadow-lg"
+        className="flex w-screen flex-col items-center justify-center bg-quaternaryGrey p-6 shadow-lg md:m-3 md:w-full md:rounded-3xl"
       >
-        <ClipboardCheck className="text-primaryPink" height={125} width={125} />
-        <h1 className="text-3xl pt-2">ORDER ID</h1>
-        <h1 className="text-lg pb-2">{orderId}</h1>
-        <h2 className="text-lg pb-2">{date}</h2>
+        <Image src="/icons/orders_pink.svg" width={75} height={75} alt="" />
+        <h1 className="pt-2 text-3xl">ORDER ID</h1>
+        <h1 className="pb-2 text-lg">{orderId}</h1>
+        <h2 className="pb-2 text-lg">{date}</h2>
 
         <div className="w-full">
-          <div className="flex flex-row justify-between items-center bg-primaryPink my-1">
+          <div className="my-1 flex flex-row items-center justify-between bg-primaryPink">
             <div className="relative w-3/12 object-cover"></div>
-            <p className="text-white w-5/12 m-1 pl-2 ">Name</p>
-            <p className="text-white w-2/12 m-1">Qty</p>
-            <p className="text-white w-2/12 m-1">Price</p>
+            <p className="m-1 w-5/12 pl-2 text-white ">Name</p>
+            <p className="m-1 w-2/12 text-white">Qty</p>
+            <p className="m-1 w-2/12 text-white">Price</p>
           </div>
           {orderItemElements}
-          <div className="w-full text-right bg-primaryPink text-secondaryWhite p-2 ">
-            <p className="inline text-bold">Order Total = </p>
-            <p className="inline text-bold">£{totalPrice.toFixed(2)}</p>
+          <div className="w-full bg-primaryPink p-2 text-right text-secondaryWhite ">
+            <p className="text-bold inline">Order Total = </p>
+            <p className="text-bold inline">£{totalPrice.toFixed(2)}</p>
           </div>
         </div>
-        <div className="md:hidden w-11/12 sm:border-b sm:border-primaryPink sm:py-6"></div>
+        <div className="w-11/12 sm:border-b sm:border-primaryPink sm:py-6 md:hidden"></div>
       </article>
     )
   })
 
   const noOrders = (
-    <div className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center justify-center rounded-3xl bg-secondaryWhite p-8 ">
-      <ClipboardCheck className="text-primaryPink" height={125} width={125} />
-      <h1 className="bg-primaryPink text-lg rounded-3xl text-secondaryWhite p-3 m-5">
+    <div className="relative flex max-w-[800px] flex-col items-center justify-center rounded-3xl bg-secondaryWhite p-8 text-sm sm:w-11/12 md:w-[580px] md:text-base ">
+      <Image src="/icons/orders_pink.svg" width={75} height={75} alt="" />
+      <h1 className="m-5 rounded-3xl bg-primaryPink p-3 text-lg text-secondaryWhite">
         No orders to display
       </h1>
     </div>
   )
 
   return (
-    <div className="relative sm:w-11/12 md:w-[580px] max-w-[800px] text-sm md:text-base flex flex-col items-center shandow-lg justify-center m-8">
+    <div className="shandow-lg relative m-8 flex max-w-[800px] flex-col items-center justify-center text-sm sm:w-11/12 md:w-[580px] md:text-base">
       {orders.length === 0 ? noOrders : null}
       {orders.length > 0 ? orderItems : null}
     </div>

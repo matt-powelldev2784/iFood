@@ -1,6 +1,6 @@
 import React from 'react'
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
-import { HandCard } from 'iconoir-react'
+import Image from 'next/image'
 import { Button } from '@/components'
 import { useAppSelector } from '@/redux/store/reduxHooks'
 
@@ -80,11 +80,7 @@ export default function CheckoutForm() {
       onSubmit={handleSubmit}
       className="flex h-[42rem] flex-col items-center rounded-3xl p-8 md:m-8 md:my-8 md:h-[40rem] md:bg-quaternaryGrey md:shadow-lg"
     >
-      <HandCard
-        className="min-h-[4rem] text-primaryPink"
-        height={125}
-        width={125}
-      />
+      <Image src="/icons/payment_pink.svg" width={125} height={125} alt="" />
       <h1 className="pb-5 text-center text-3xl">PAYMENT</h1>
 
       <PaymentElement id="payment-element" options={paymentElementOptions} />

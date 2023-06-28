@@ -1,6 +1,5 @@
 import { TSFoodMenuItem } from '@/ts/interfaces'
 import Image from 'next/image'
-import { RemoveSquare } from 'iconoir-react'
 import { useAppDispatch } from '@/redux/store/reduxHooks'
 import { removeCartItem } from '@/redux/slices/cartSlice'
 
@@ -35,7 +34,7 @@ export const CartItem = ({
         <p className="m-1 w-2/12 text-center text-white">{quantity}</p>
         <p className="m-1 w-2/12 text-white">{itemTotal?.toFixed(2)}</p>
         <p className="m-1 w-1/12 text-white">
-          <RemoveSquare onClick={onRemoveItem} />
+          <Image src="/icons/x_sqaure.svg" width={25} height={25} alt="" />
         </p>
       </div>
     </article>

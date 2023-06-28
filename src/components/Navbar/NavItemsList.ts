@@ -1,5 +1,3 @@
-import MenuIcon from '/public/icons/menu.svg'
-
 interface NavItem {
   id: number
   name: string
@@ -41,7 +39,7 @@ export const navItemsList: NavItem[] = [
   {
     id: 4,
     name: 'Login',
-    icon: '/icons/menu.svg',
+    icon: '/icons/signin.svg',
     link: '/pages/auth/signin',
     sessionReq: false,
   },

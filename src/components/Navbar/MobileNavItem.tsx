@@ -1,9 +1,7 @@
-import { createElement } from 'react'
-import Link from 'next/link'
-import { IconoirProvider } from 'iconoir-react'
 import { useRouter } from 'next/router'
 import { toggleMobileMenu } from '@/redux/slices/userSlice'
 import { useAppDispatch } from '@/redux/store/reduxHooks'
+import Image from 'next/image'
 
 interface MobileNavItemProps {
   icon: any
@@ -32,39 +30,25 @@ export const MobileNavItem = ({
 
   if (telephoneHref) {
     return (
-      <IconoirProvider
-        iconProps={{
-          color: '#ffffff',
-          strokeWidth: 2,
-          width: '1.2em',
-          height: '1.2em',
-        }}
-      >
-        <a href={telephoneHref} className="flex items-center gap-2">
-          <div className="">{createElement(icon)}</div>
-          <p className="w-full whitespace-nowrap text-2xl text-secondaryWhite">
-            {name}
-          </p>
-        </a>
-      </IconoirProvider>
-    )
-  }
-
-  return (
-    <IconoirProvider
-      iconProps={{
-        color: '#ffffff',
-        strokeWidth: 2,
-        width: '1.2em',
-        height: '1.2em',
-      }}
-    >
-      <a onClick={onLinkClick} className="flex items-center gap-2">
-        <div className="">{createElement(icon)}</div>
+      <a href={telephoneHref} className="flex items-center gap-2">
+        <div className="">
+          <Image src={icon} width={40} height={40} alt="" />
+        </div>
         <p className="w-full whitespace-nowrap text-2xl text-secondaryWhite">
           {name}
         </p>
       </a>
-    </IconoirProvider>
+    )
+  }
+
+  return (
+    <a onClick={onLinkClick} className="flex items-center gap-2">
+      <div className="">
+        <Image src={icon} width={40} height={40} alt="" />
+      </div>
+      <p className="w-full whitespace-nowrap text-2xl text-secondaryWhite">
+        {name}
+      </p>
+    </a>
   )
 }

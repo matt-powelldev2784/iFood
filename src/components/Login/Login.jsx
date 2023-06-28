@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
 import { selectUsertSlice } from '@/redux/slices/userSlice'
 import { getAuthUser } from '@/redux/slices/userSlice'
 import { useRouter } from 'next/router'
-import { SmallShopAlt } from 'iconoir-react'
 
 export const Login = () => {
   const dispatch = useAppDispatch()
@@ -16,7 +15,7 @@ export const Login = () => {
     return (
       <p
         key={i}
-        className="bg-primaryPink text-secondaryWhite text-center p-2 mt-4"
+        className="mt-4 bg-primaryPink p-2 text-center text-secondaryWhite"
       >
         {error}
       </p>
@@ -44,13 +43,12 @@ export const Login = () => {
   })
 
   return (
-    <section className="relative sm:w-11/12 md:w-[400px] max-w-[400px] flex flex-col items-center justify-center rounded-3xl px-6 md:p-8 bg-secondaryWhite">
-      <SmallShopAlt className="text-primaryPink" height={125} width={125} />
+    <section className="relative flex max-w-[400px] flex-col items-center justify-center rounded-3xl bg-secondaryWhite px-6 sm:w-11/12 md:w-[400px] md:p-8">
       <h1 className="text-3xl">LOGIN</h1>
       {errorMessages ? errorMessages : null}
       <form
         onSubmit={formik.handleSubmit}
-        className="w-full flex flex-col items-center justify-center m-2"
+        className="m-2 flex w-full flex-col items-center justify-center"
       >
         <Input
           id="email"

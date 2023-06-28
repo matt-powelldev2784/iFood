@@ -1,12 +1,12 @@
 import { useSession } from 'next-auth/react'
 import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
 import { CartItem } from './CartItem'
-import { Cart } from 'iconoir-react'
 import { Button } from '@/components'
 import { generatePendingOrder } from '@/redux/slices/cartSlice'
 import { setLoginToOrderError } from '@/redux/slices/userSlice'
 import { useRouter } from 'next/router'
 import { TSCartMenuItem } from '@/ts/interfaces'
+import Image from 'next/image'
 
 export const ConfirmOrder = () => {
   const dispatch = useAppDispatch()
@@ -57,7 +57,7 @@ export const ConfirmOrder = () => {
   return (
     <article className="relative m-3 flex w-11/12 max-w-[800px] flex-col items-center justify-center text-sm md:m-8 md:h-[40rem] md:w-[580px] md:rounded-3xl md:bg-quaternaryGrey md:p-6 md:text-base md:shadow-lg">
       <div className="flex flex-col items-center justify-center p-4">
-        <Cart className="text-primaryPink" height={125} width={125} />
+        <Image src="/icons/cart_pink.svg" width={125} height={125} alt="" />
         <h1 className="p-2 text-3xl">CHECKOUT</h1>
       </div>
       <div className="w-full">

@@ -1,9 +1,9 @@
 import { signOut } from 'next-auth/react'
 import { Navbar, Button } from '@/components'
-import { LogOut } from 'iconoir-react'
 import { useAppDispatch } from '@/redux/store/reduxHooks'
 import { resetAllState } from '@/redux/store/store'
 import { useSession } from 'next-auth/react'
+import Image from 'next/image'
 
 export default function SignOut({}) {
   const dispatch = useAppDispatch()
@@ -18,11 +18,11 @@ export default function SignOut({}) {
   return (
     <>
       <Navbar />
-      <section className="flex justify-center min-h-screen bg-quaternaryGrey md:bg-quaternaryGrey/25">
-        <article className="sm:w-screen md:w-[400px] max-w-[400px] h-[20rem] flex flex-col items-center justify-center rounded-3xl md:bg-quaternaryGrey md:shadow-lg md:m-8 p-8">
-          <LogOut className="text-primaryPink" height={125} width={125} />
-          <h1 className="text-3xl pb-5">SIGN OUT</h1>
-          <div className="w-full md:w-11/12 text-lg flex flex-col items-center">
+      <section className="flex min-h-screen justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
+        <article className="flex h-[20rem] max-w-[400px] flex-col items-center justify-center rounded-3xl p-8 sm:w-screen md:m-8 md:w-[400px] md:bg-quaternaryGrey md:shadow-lg">
+          <Image src="/icons/home.svg" width={125} height={125} alt="" />
+          <h1 className="pb-5 text-3xl">SIGN OUT</h1>
+          <div className="flex w-full flex-col items-center text-lg md:w-11/12">
             <Button
               type="button"
               onClick={onSignOutClick}

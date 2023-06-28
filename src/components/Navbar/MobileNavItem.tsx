@@ -32,7 +32,7 @@ export const MobileNavItem = ({
     return (
       <a href={telephoneHref} className="flex items-center gap-2">
         <div className="">
-          <Image src="/icons/menu.svg" width={40} height={40} alt="" />
+          <Image src={icon} width={40} height={40} alt="" />
         </div>
         <p className="w-full whitespace-nowrap text-2xl text-secondaryWhite">
           {name}
@@ -44,7 +44,7 @@ export const MobileNavItem = ({
   return (
     <a onClick={onLinkClick} className="flex items-center gap-2">
       <div className="">
-        <Image src="/icons/menu.svg" width={40} height={40} alt="" />
+        <Image src={icon} width={40} height={40} alt="" />
       </div>
       <p className="w-full whitespace-nowrap text-2xl text-secondaryWhite">
         {name}

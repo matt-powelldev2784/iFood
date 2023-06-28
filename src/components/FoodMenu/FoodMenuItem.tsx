@@ -37,11 +37,11 @@ export const FoodMenuItem = ({
 
   return (
     <>
-      <article className="h-[10rem] flex basis-11/12 md:basis-full items-center border-2 border-black/25 rounded-xl bg-secondaryWhite">
-        <div className="w-8/12 h-full flex flex-col justify-between p-4">
+      <article className="flex h-[10rem] basis-11/12 items-center rounded-xl border-2 border-black/25 bg-secondaryWhite md:basis-full">
+        <div className="flex h-full w-8/12 flex-col justify-between p-4">
           <p className="text-lg">{name}</p>
           <p className="text-md">{price}</p>
-          <div className="grow flex items-end">
+          <div className="flex grow items-end">
             <Button
               text="Add to cart"
               type="button"
@@ -51,12 +51,12 @@ export const FoodMenuItem = ({
           </div>
         </div>
 
-        <div className="relative w-4/12 h-5/6 m-4">
+        <div className="relative m-4 h-5/6 w-4/12">
           <p
-            className="absolute text-sm text-center text-white bg-primaryPink right-2 bottom-2 rounded-lg cursor-pointer z-10 p-1"
+            className="absolute right-2 bottom-2 z-10 cursor-pointer rounded-lg bg-primaryPink p-1 text-center text-sm text-white"
             onClick={handleMoreInfoClick}
           >
-            <InfoEmpty strokeWidth={2} />
+            <Image src="/icons/info.svg" width={25} height={25} alt="" />
           </p>
           <Image
             src={`/foodImages/${image}`}

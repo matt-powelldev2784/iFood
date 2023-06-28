@@ -8,6 +8,7 @@ import { generatePendingOrder } from '@/redux/slices/cartSlice'
 import { setLoginToOrderError } from '@/redux/slices/userSlice'
 import { useRouter } from 'next/router'
 import { TSCartMenuItem } from '@/ts/interfaces'
+import Image from 'next/image'
 
 export const CartSection = () => {
   const dispatch = useAppDispatch()
@@ -68,7 +69,7 @@ export const CartSection = () => {
       <div className="item-center flex h-3/4 w-full">
         <div className="h-1/12 flex w-full flex-col items-center justify-center rounded-3xl bg-quaternaryGrey px-6 text-sm shadow-lg md:px-8 md:text-base">
           <div className="flex flex-col items-center justify-center p-4">
-            <Cart className="text-primaryPink" height={75} width={75} />
+            <Image src="/icons/cart_pink.svg" width={75} height={75} alt="" />
             <h1 className="p-2 text-3xl">CHECKOUT</h1>
           </div>
           <div className="w-full">

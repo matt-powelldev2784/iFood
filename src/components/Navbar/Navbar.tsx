@@ -49,10 +49,12 @@ export const Navbar = () => {
             <NavItems />
           </div>
           <a href={'tel:02088888888'}>
-            <Phone
+            <Image
+              src="/icons/menu.svg"
               className="block cursor-pointer lg:hidden"
-              height={25}
               width={25}
+              height={25}
+              alt=""
             />
           </a>
         </div>

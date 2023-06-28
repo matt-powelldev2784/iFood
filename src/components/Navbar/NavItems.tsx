@@ -35,6 +35,6 @@ export const NavItems = () => {
   })
 
   return (
-    <div className="w-5/6 flex flex-row justify-between gap-8">{NavItems}</div>
+    <div className="flex w-fit flex-row justify-between gap-8">{NavItems}</div>
   )
 }

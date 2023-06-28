@@ -26,10 +26,12 @@ export const Navbar = () => {
     <header className="relative h-[3rem] w-screen md:h-[4rem]">
       {mobileMenuIsOpen ? <MobileNav onClick={handleToggleMobileMenu} /> : null}
       <nav className="fixed top-0 z-40 flex h-[3rem] w-screen min-w-[280px] flex-row items-center justify-between bg-primaryPink text-secondaryWhite md:h-[4rem]">
-        <Menu
-          className="fill-floralWhite ml-4 cursor-pointer md:mx-8 lg:hidden"
-          height={25}
+        <Image
+          src="/icons/hamburger.svg"
           width={25}
+          height={25}
+          className="fill-floralWhite ml-4 cursor-pointer md:mx-8 lg:hidden"
+          alt=""
           onClick={handleToggleMobileMenu}
         />
         <Link href="/">
@@ -50,10 +52,10 @@ export const Navbar = () => {
           </div>
           <a href={'tel:02088888888'}>
             <Image
-              src="/icons/menu.svg"
+              src="/icons/tel.svg"
               className="block cursor-pointer lg:hidden"
-              width={25}
-              height={25}
+              width={30}
+              height={30}
               alt=""
             />
           </a>

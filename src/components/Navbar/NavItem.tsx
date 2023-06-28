@@ -12,7 +12,7 @@ export const NavItem = ({ icon, link, name, telephoneHref }: NavItemProps) => {
   if (telephoneHref) {
     return (
       <a href={telephoneHref} className="flex items-center gap-2">
-        <Image src="/icons/menu.svg" width={30} height={30} alt="" />
+        <Image src="/icons/menu.svg" width={25} height={25} alt="" />
         <p className="w-full whitespace-nowrap text-xl text-secondaryWhite">
           {name}
         </p>

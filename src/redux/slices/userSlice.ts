@@ -85,6 +85,10 @@ export const getAuthUser = createAsyncThunk('userState/auth', async () => {
     ).json()
 
     const user = res.data
+
+    if (!user) {
+      throw Error('No user found')
+    }
     console.log('user', user)
     return user
   } catch (err: any) {

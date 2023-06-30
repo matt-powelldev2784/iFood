@@ -76,15 +76,12 @@ export const getAuthUser = createAsyncThunk('userState/auth', async () => {
     // })
 
     const res = await (
-      await fetch(
-        'https://nextjs-food-take-away-app-xm8o.vercel.app/api/v1/user/user',
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
+      await fetch('/api/v1/user/user', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
     ).json()
 
     const user = res.data

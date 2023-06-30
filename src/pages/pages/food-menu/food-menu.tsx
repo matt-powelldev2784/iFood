@@ -7,7 +7,7 @@ export default function FoodMenuPage({ menuItems }: TSFoodMenuItems) {
     <>
       <title>Curry Club</title>
       <Navbar />
-      <section className="min-h-screen top-[3rem] md:top-[4rem]">
+      <section className="top-[3rem] min-h-screen md:top-[4rem]">
         <FoodMenu menuItems={menuItems} />
       </section>
     </>
@@ -16,10 +16,13 @@ export default function FoodMenuPage({ menuItems }: TSFoodMenuItems) {
 
 export async function getStaticProps() {
   try {
-    const foodItems = await apiCall({
-      httpMethod: 'GET',
-      route: `api/v1/food-item/food-item`,
-    })
+    // const foodItems = await apiCall({
+    //   httpMethod: 'GET',
+    //   route: `api/v1/food-item/food-item`,
+    // })
+
+    const foodItems = await (await fetch(`api/v1/food-item/food-item`)).json()
+
     const { data } = foodItems
     return {
       props: { menuItems: data },

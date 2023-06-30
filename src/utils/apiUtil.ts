@@ -28,8 +28,8 @@ export const apiCall = async (apiOptions: ApiOptions) => {
     const { data } = response
     return data
   } catch (err: any) {
-    console.log('err', err)
-    console.error(err)
+    // console.log('err', err)
+
     throw err
   }
 }

@@ -21,7 +21,7 @@ export async function getStaticProps() {
     //   route: `api/v1/food-item/food-item`,
     // })
 
-    const foodItems = await (await fetch(`api/v1/food-item/food-item`)).json()
+    const foodItems = await (await fetch(`/api/v1/food-item/food-item`)).json()
 
     const { data } = foodItems
     return {

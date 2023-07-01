@@ -15,19 +15,15 @@ export default function FoodMenuPage({ menuItems }: TSFoodMenuItems) {
 }
 
 export async function getStaticProps() {
-  console.log('test1')
   try {
     const foodItems = await apiCall({
       httpMethod: 'GET',
       route: `/api/v1/food-item/food-item`,
     })
-    console.log('test2')
-    console.log('foodItems', foodItems)
 
     const { data } = foodItems
-    console.log('data', data)
+
     return {
-      // props: { menuItems: [] },
       props: { menuItems: data },
       revalidate: 60,
     }

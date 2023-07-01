@@ -16,17 +16,17 @@ export default function FoodMenuPage({ menuItems }: TSFoodMenuItems) {
 
 export async function getStaticProps() {
   try {
-    // const foodItems = await apiCall({
-    //   httpMethod: 'GET',
-    //   route: `api/v1/food-item/food-item`,
-    // })
+    const foodItems = await apiCall({
+      httpMethod: 'GET',
+      route: `api/v1/food-item/food-item`,
+    })
 
-    const foodItems = await (
-      await fetch(
-        `https://nextjs-food-take-away-app-xm8o.vercel.app/api/v1/food-item/food-item`
-      )
-    ).json()
-    console.log('foodItems-----------', foodItems)
+    // const foodItems = await (
+    //   await fetch(
+    //     `https://nextjs-food-take-away-app-xm8o.vercel.app/api/v1/food-item/food-item`
+    //   )
+    // ).json()
+    // console.log('foodItems-----------', foodItems)
 
     const { data } = foodItems
     return {

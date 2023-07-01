@@ -27,8 +27,8 @@ export async function getStaticProps() {
     const { data } = foodItems
     console.log('data', data)
     return {
-      props: { menuItems: [] },
-      // props: { menuItems: data },
+      // props: { menuItems: [] },
+      props: { menuItems: data },
       revalidate: 60,
     }
     //----------------------------------

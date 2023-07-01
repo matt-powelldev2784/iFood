@@ -21,13 +21,6 @@ export async function getStaticProps() {
       route: `api/v1/food-item/food-item`,
     })
 
-    // const foodItems = await (
-    //   await fetch(
-    //     `https://nextjs-food-take-away-app-xm8o.vercel.app/api/v1/food-item/food-item`
-    //   )
-    // ).json()
-    // console.log('foodItems-----------', foodItems)
-
     const { data } = foodItems
     return {
       props: { menuItems: data },

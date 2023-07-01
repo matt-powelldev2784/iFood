@@ -35,9 +35,9 @@ export async function getStaticProps() {
   } catch (error) {
     // console.log(error)
     console.log('food menu getStaticProps catch block console log')
-    // return {
-    //   props: { menuItems: [] },
-    //   revalidate: 60,
-    // }
+    return {
+      props: { menuItems: [] },
+      revalidate: 60,
+    }
   }
 }

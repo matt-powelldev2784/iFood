@@ -84,7 +84,7 @@ export default function SignIn({
     <>
       <Navbar />
       <section className="flex min-h-screen justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
-        <div className="flex h-[32rem] max-w-[400px] flex-col items-center justify-center rounded-3xl p-8 shadow-lg sm:w-screen md:m-8 md:w-[400px] md:bg-quaternaryGrey">
+        <div className="flex h-[32rem] max-w-[400px] flex-col items-center justify-center p-8 sm:w-screen md:m-8 md:w-[400px] md:rounded-3xl md:bg-quaternaryGrey md:shadow-lg">
           <Image src="/icons/home_pink.svg" width={125} height={125} alt="" />
           <h1 className="pb-5 text-3xl">SIGN IN</h1>
           {...emailProviderJSX}

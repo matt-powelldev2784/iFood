@@ -14,7 +14,7 @@ export default function FoodItemPage(foodItem: TSFoodItemResponse) {
     <>
       <title>Curry Club</title>
       <Navbar />
-      <section className="bg-quaternaryGrey/25 min-h-screen flex justify-center items-start">
+      <section className="flex min-h-screen items-start justify-center bg-quaternaryGrey/25">
         {foodItem && <FoodPageItem foodItem={foodItemObj} />}
       </section>
     </>
@@ -49,6 +49,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     })
 
     const foodItem = foodItemRequest.data.foodItem
+    console.log('foodItem', foodItem)
 
     return {
       props: { foodItem },

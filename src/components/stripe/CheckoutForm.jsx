@@ -78,11 +78,14 @@ export default function CheckoutForm() {
     <form
       id="payment-form"
       onSubmit={handleSubmit}
-      className="flex h-[42rem] flex-col items-center rounded-3xl p-8 md:m-8 md:my-8 md:h-[40rem] md:bg-quaternaryGrey md:shadow-lg"
+      className="flex h-[42rem] flex-col items-center rounded-3xl p-8 md:m-8 md:my-8 md:h-fit md:bg-quaternaryGrey md:shadow-lg"
     >
       <Image src="/icons/payment_pink.svg" width={125} height={125} alt="" />
-      <h1 className="pb-5 text-center text-3xl">PAYMENT</h1>
-
+      <h1 className="pb-2 text-center text-3xl">PAYMENT</h1>
+      <div className="mb-4 w-full max-w-[280px] text-justify text-sm text-primaryPink">
+        This is a dummy payment page. Please use card number 4242 4242 4242 4242
+        with any future expiry date and any CVC number.
+      </div>
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       <Button
         disabled={isLoading || !stripe || !elements}

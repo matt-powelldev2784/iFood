@@ -18,10 +18,11 @@ export async function getStaticProps() {
   try {
     const foodItems = await apiCall({
       httpMethod: 'GET',
-      route: `/api/v1/food-item/food-item`,
+      route: `api/v1/food-item/food-item`,
     })
 
     const { data } = foodItems
+    console.log('data', data)
     return {
       props: { menuItems: data },
       revalidate: 60,

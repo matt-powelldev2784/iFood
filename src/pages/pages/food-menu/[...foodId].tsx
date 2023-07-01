@@ -45,7 +45,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     const foodId = context.params?.foodId
     const foodItemRequest = await apiCall({
       httpMethod: 'GET',
-      route: `api/v1/food-item/${foodId}`,
+      route: `/api/v1/food-item/${foodId}`,
     })
 
     const foodItem = foodItemRequest.data.foodItem

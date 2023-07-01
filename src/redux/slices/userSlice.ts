@@ -44,23 +44,23 @@ export const signUp = createAsyncThunk(
     password2,
   }: signUpEmailPassword): Promise<any> => {
     try {
-      // const res = await apiCall({
-      //   httpMethod: 'POST',
-      //   route: 'api/v1/user/user',
-      //   body: { name, email, password, password2 },
-      // })
-
-      const res = await fetch('/api/v1/user/user', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, email, password, password2 }),
+      const res = await apiCall({
+        httpMethod: 'POST',
+        route: 'api/v1/user/user',
+        body: { name, email, password, password2 },
       })
 
-      const { data } = await res.json()
+      // const res = await fetch('/api/v1/user/user', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({ name, email, password, password2 }),
+      // })
 
-      // const { data } = res
+      // const { data } = await res.json()
+
+      const { data } = res
       return data
     } catch (err: any) {
       throw Error(err)

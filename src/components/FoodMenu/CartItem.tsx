@@ -33,7 +33,7 @@ export const CartItem = ({
         <p className="m-1 w-4/12 break-words pl-2 text-white">{name}</p>
         <p className="m-1 w-2/12 text-center text-white">{quantity}</p>
         <p className="m-1 w-2/12 text-white">{itemTotal?.toFixed(2)}</p>
-        <p className="m-1 w-1/12 text-white">
+        <p className="m-1 w-1/12 text-white" onClick={onRemoveItem}>
           <Image src="/icons/x_sqaure.svg" width={25} height={25} alt="" />
         </p>
       </div>

@@ -22,7 +22,9 @@ export async function getStaticProps() {
     // })
 
     const foodItems = await (
-      await fetch(`http://localhost:3000/api/v1/food-item/food-item`)
+      await fetch(
+        `https://nextjs-food-take-away-app-xm8o.vercel.app/api/v1/food-item/food-item`
+      )
     ).json()
     console.log('foodItems-----------', foodItems)
 

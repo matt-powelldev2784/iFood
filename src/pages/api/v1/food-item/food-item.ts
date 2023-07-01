@@ -76,6 +76,7 @@ const getFoodItems = async (req: NextApiRequest, res: NextApiResponse) => {
   const foodItems = await prisma.foodItem.findMany({
     select: { id: true, name: true, price: true, image: true, category: true },
   })
+
   const numberOfFoodItems = foodItems.length
 
   return res.status(200).json({

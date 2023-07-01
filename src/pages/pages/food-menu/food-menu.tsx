@@ -21,7 +21,10 @@ export async function getStaticProps() {
     //   route: `api/v1/food-item/food-item`,
     // })
 
-    const foodItems = await (await fetch(`/api/v1/food-item/food-item`)).json()
+    const foodItems = await (
+      await fetch(`http://localhost:3000/api/v1/food-item/food-item`)
+    ).json()
+    console.log('foodItems-----------', foodItems)
 
     const { data } = foodItems
     return {
@@ -32,9 +35,9 @@ export async function getStaticProps() {
   } catch (error) {
     console.log(error)
     console.log('food menu getStaticProps catch block console log')
-    return {
-      props: { menuItems: [] },
-      revalidate: 60,
-    }
+    // return {
+    //   props: { menuItems: [] },
+    //   revalidate: 60,
+    // }
   }
 }

@@ -91,7 +91,7 @@ export const cartSlice = createSlice({
       state.totalPrice = state.totalPrice - price
 
       if (state.order[existingItemIndex].quantity === 1) {
-        state.order.splice(existingItemIndex)
+        state.order.splice(existingItemIndex, 1)
         return
       }
 

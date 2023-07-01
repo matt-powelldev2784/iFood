@@ -50,16 +50,6 @@ export const signUp = createAsyncThunk(
         body: { name, email, password, password2 },
       })
 
-      // const res = await fetch('/api/v1/user/user', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify({ name, email, password, password2 }),
-      // })
-
-      // const { data } = await res.json()
-
       const { data } = res
       return data
     } catch (err: any) {

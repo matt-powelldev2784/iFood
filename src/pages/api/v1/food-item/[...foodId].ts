@@ -20,6 +20,7 @@ export default async function handler(
 
 const getFoodItemById = async (req: NextApiRequest, res: NextApiResponse) => {
   let foodId = req.query.foodId?.[0]
+  console.log('foodId', foodId)
 
   if (!foodId)
     return res.status(400).json({

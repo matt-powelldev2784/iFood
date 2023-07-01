@@ -43,18 +43,30 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: GetStaticPropsContext) {
   try {
     const foodId = context.params?.foodId
+    console.log('foodId', foodId)
     const foodItemRequest = await apiCall({
       httpMethod: 'GET',
       route: `/api/v1/food-item/${foodId}`,
     })
 
+    // const foodItemRequest = await (
+    //   await fetch(
+    //     `https://nextjs-food-take-away-app-xm8o.vercel.app/api/v1/food-item/${foodId}`
+    //   )
+    // ).json()
+    // console.log('foodItemRequest', foodItemRequest)
+
     const foodItem = foodItemRequest.data.foodItem
     console.log('foodItem', foodItem)
 
     return {
-      props: { foodItem },
-      revalidate: 60,
+      props: { foodItem: [] },
     }
+
+    // return {
+    //   props: { foodItem },
+    //   revalidate: 60,
+    // }
   } catch (error) {
     console.log(error)
     console.log('[...foodId] getStaticProps catch block console log')

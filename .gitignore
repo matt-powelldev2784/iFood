@@ -36,8 +36,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-_todo.txt
-
 /_trash
 /_trash/images/
 /analyze

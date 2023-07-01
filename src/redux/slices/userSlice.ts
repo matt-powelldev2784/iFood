@@ -75,15 +75,6 @@ export const getAuthUser = createAsyncThunk('userState/auth', async () => {
       route: 'api/v1/user/user',
     })
 
-    // const res = await (
-    //   await fetch('/api/v1/user/user', {
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   })
-    // ).json()
-
     const user = res.data
 
     if (!user) {

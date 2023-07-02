@@ -1,5 +1,3 @@
-import { useAppSelector } from '@/redux/store/reduxHooks'
-
 interface LoadingProps {
   isLoadingState: boolean
 }

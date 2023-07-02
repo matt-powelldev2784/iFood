@@ -5,11 +5,11 @@ import { TSOrderItem, TSOrder } from '@/ts/interfaces'
 import { OrderItem } from './OrderItem'
 import { convertToReableDate } from '@/utils/convertToReableDate'
 import Image from 'next/image'
-import { Loading } from '@/components'
+import { Loading, Error } from '@/components'
 
 export const Orders = () => {
   const dispatch = useAppDispatch()
-  const { orders, isLoading } = useAppSelector((state) => state.orders)
+  const { orders, isLoading, errors } = useAppSelector((state) => state.orders)
   const userId = useAppSelector((state) => state.user.id)
 
   useEffect(() => {
@@ -71,6 +71,7 @@ export const Orders = () => {
       <h1 className="m-5 rounded-3xl bg-primaryPink p-3 text-lg text-secondaryWhite">
         No orders to display
       </h1>
+      {errors ? <Error errorMessage={errors[0]} /> : null}
     </div>
   )
 

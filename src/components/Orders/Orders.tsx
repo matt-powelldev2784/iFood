@@ -5,10 +5,11 @@ import { TSOrderItem, TSOrder } from '@/ts/interfaces'
 import { OrderItem } from './OrderItem'
 import { convertToReableDate } from '@/utils/convertToReableDate'
 import Image from 'next/image'
+import { Loading } from '@/components'
 
 export const Orders = () => {
   const dispatch = useAppDispatch()
-  const { orders } = useAppSelector((state) => state.orders)
+  const { orders, isLoading } = useAppSelector((state) => state.orders)
   const userId = useAppSelector((state) => state.user.id)
 
   useEffect(() => {
@@ -75,7 +76,8 @@ export const Orders = () => {
 
   return (
     <div className="shandow-lg relative m-8 flex max-w-[800px] flex-col items-center justify-center text-sm sm:w-11/12 md:w-[580px] md:text-base">
-      {orders.length === 0 ? noOrders : null}
+      <Loading isLoadingState={isLoading} />
+      {!isLoading && orders.length === 0 ? noOrders : null}
       {orders.length > 0 ? orderItems : null}
     </div>
   )

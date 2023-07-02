@@ -7,6 +7,7 @@ import { TSOrder, TSOrderItem } from '@/ts/interfaces'
 export interface OrdersState {
   orders: TSOrderItem[]
   errors: ApiErrorMsg[] | string[] | null
+  isLoading: boolean
 }
 
 export interface UserId {
@@ -20,6 +21,7 @@ export interface OrderId {
 const initialState: OrdersState = {
   orders: [],
   errors: null,
+  isLoading: false,
 }
 
 export const getUserOrders = createAsyncThunk(
@@ -84,15 +86,18 @@ export const ordersSlice = createSlice({
       .addCase(getUserOrders.pending, (state) => {
         state.orders = []
         state.errors = null
+        state.isLoading = true
       })
       .addCase(getUserOrders.fulfilled, (state, { payload }) => {
         state.orders = payload
         state.errors = null
+        state.isLoading = false
       })
       .addCase(getUserOrders.rejected, (state, { error }: AnyAction) => {
         state.orders = []
         state.errors = null
         state.errors = [error.message]
+        state.isLoading = false
       })
 
     //---------------------------------------------------------------------

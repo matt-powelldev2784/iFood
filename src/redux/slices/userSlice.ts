@@ -85,7 +85,9 @@ export const userSlice = createSlice({
       state.errors = ['Please login or signup to place order']
     },
     resetUserState(state) {
+      const menuIsOpen = state.mobileMenuIsOpen
       Object.assign(state, initialState)
+      state.mobileMenuIsOpen = menuIsOpen
     },
     toggleMobileMenu(state) {
       state.mobileMenuIsOpen = !state.mobileMenuIsOpen

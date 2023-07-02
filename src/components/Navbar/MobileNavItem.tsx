@@ -42,13 +42,13 @@ export const MobileNavItem = ({
   }
 
   return (
-    <a onClick={onLinkClick} className="flex items-center gap-2">
+    <button onClick={onLinkClick} className="flex items-center gap-2">
       <div className="">
         <Image src={icon} width={40} height={40} alt="" />
       </div>
       <p className="w-full whitespace-nowrap text-2xl text-secondaryWhite">
         {name}
       </p>
-    </a>
+    </button>
   )
 }

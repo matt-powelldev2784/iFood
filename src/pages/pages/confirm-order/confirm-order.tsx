@@ -1,14 +1,16 @@
-import { Navbar, ConfirmOrder } from '@/components'
+import { Navbar, ConfirmOrder, MobileNav } from '@/components'
 import withAuth from '../../withAuth'
+import { useMobileMenuIsOpen } from '@/hooks/hooksIndex'
 
 function ConfirmOrderPage() {
+  const mobileMenuIsOpen = useMobileMenuIsOpen()
+
   return (
     <>
       <title>Curry Club</title>
-      <Navbar />
-      <div className="flex min-h-screen items-start justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
-        <ConfirmOrder />
-      </div>
+      {mobileMenuIsOpen ? <MobileNav /> : null}
+      {mobileMenuIsOpen ? null : <Navbar />}
+      {mobileMenuIsOpen ? null : <ConfirmOrder />}
     </>
   )
 }

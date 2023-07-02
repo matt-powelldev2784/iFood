@@ -1,11 +1,12 @@
-import { useEffect } from 'react'
 import Head from 'next/head'
-import { Hero, Navbar, Gallery, Footer } from '@/components'
+import { Hero, Navbar, Gallery, Footer, MobileNav } from '@/components'
 import { useAppDispatch } from '@/redux/store/reduxHooks'
 import { resetUserState } from '@/redux/slices/userSlice'
+import { useMobileMenuIsOpen } from '@/hooks/hooksIndex'
 
 export default function Home() {
   const dispatch = useAppDispatch()
+  const mobileMenuIsOpen = useMobileMenuIsOpen()
   dispatch(resetUserState())
 
   return (
@@ -17,10 +18,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
-      <Hero />
-      <Gallery />
-      <Footer />
+      {mobileMenuIsOpen ? <MobileNav /> : null}
+      {mobileMenuIsOpen ? null : <Navbar />}
+      {mobileMenuIsOpen ? null : <Hero />}
+      {mobileMenuIsOpen ? null : <Gallery />}
+      {mobileMenuIsOpen ? null : <Footer />}
     </>
   )
 }

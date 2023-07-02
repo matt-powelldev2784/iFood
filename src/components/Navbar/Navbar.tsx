@@ -2,13 +2,14 @@ import { useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { NavItems } from './NavItems'
-import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
-import { getAuthUser, toggleMobileMenu } from '@/redux/slices/userSlice'
-import { MobileNav } from '@/components'
+
+import { useAppDispatch } from '@/redux/store/reduxHooks'
+import { getAuthUser } from '@/redux/slices/userSlice'
+import { useToogleMobileMenu, useMobileMenuIsOpen } from '@/hooks/hooksIndex'
 
 export const Navbar = () => {
   const dispatch = useAppDispatch()
-  const { mobileMenuIsOpen } = useAppSelector((state) => state.user)
+  const toogleMobileMenu = useToogleMobileMenu()
 
   useEffect(() => {
     const getUser = async () => {
@@ -17,13 +18,8 @@ export const Navbar = () => {
     getUser()
   }, [dispatch])
 
-  const handleToggleMobileMenu = () => {
-    dispatch(toggleMobileMenu())
-  }
-
   return (
     <header className="relative h-[3rem] w-screen md:h-[4rem]">
-      {mobileMenuIsOpen ? <MobileNav onClick={handleToggleMobileMenu} /> : null}
       <nav className="fixed top-0 z-40 flex h-[3rem] w-screen min-w-[280px] flex-row items-center justify-between bg-primaryPink text-secondaryWhite md:h-[4rem]">
         <Image
           src="/icons/hamburger.svg"
@@ -31,7 +27,7 @@ export const Navbar = () => {
           height={25}
           className="fill-floralWhite ml-4 cursor-pointer md:mx-8 lg:hidden"
           alt=""
-          onClick={handleToggleMobileMenu}
+          onClick={toogleMobileMenu}
         />
         <Link href="/">
           <div className="relative min-h-[2.5rem] min-w-[10rem] md:min-h-[3rem] md:min-w-[14rem] lg:ml-6 ">

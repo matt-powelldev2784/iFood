@@ -6,7 +6,7 @@ function ConfirmOrderPage() {
     <>
       <title>Curry Club</title>
       <Navbar />
-      <div className="flex min-h-screen justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
+      <div className="flex min-h-screen items-start justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
         <ConfirmOrder />
       </div>
     </>

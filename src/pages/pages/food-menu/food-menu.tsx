@@ -1,15 +1,17 @@
-import { Navbar, FoodMenu } from '@/components'
+import { Navbar, FoodMenu, MobileNav } from '@/components'
 import { apiCall } from '@/utils/apiUtil'
 import { TSFoodMenuItems } from '@/ts/interfaces'
+import { useMobileMenuIsOpen } from '@/hooks/hooksIndex'
 
 export default function FoodMenuPage({ menuItems }: TSFoodMenuItems) {
+  const mobileMenuIsOpen = useMobileMenuIsOpen()
+
   return (
     <>
       <title>Curry Club</title>
-      <Navbar />
-      <section className="top-[3rem] min-h-screen md:top-[4rem]">
-        <FoodMenu menuItems={menuItems} />
-      </section>
+      {mobileMenuIsOpen ? <MobileNav /> : null}
+      {mobileMenuIsOpen ? null : <Navbar />}
+      {mobileMenuIsOpen ? null : <FoodMenu menuItems={menuItems} />}
     </>
   )
 }

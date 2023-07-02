@@ -37,20 +37,22 @@ export const FoodMenu = ({ menuItems }: TSFoodMenuItems) => {
   //----------------------------------------------------------------------------------
 
   return (
-    <section className="w-screen flex items-center justify-center flex-col min-w-[320px] bg-quaternaryGrey/25">
-      <nav className="w-full text-center p-1 bg-quaternaryGrey">
-        {categoryButtons}
-      </nav>
-      <div className="w-full flex lg:gap-5">
-        <div className="flex flex-col items-center grow max-w-[1000px]">
-          {foodCatergory}
+    <section className="top-[3rem] min-h-screen md:top-[4rem]">
+      <div className="flex w-screen min-w-[320px] flex-col items-center justify-center bg-quaternaryGrey/25">
+        <nav className="w-full bg-quaternaryGrey p-1 text-center">
+          {categoryButtons}
+        </nav>
+        <div className="flex w-full lg:gap-5">
+          <div className="flex max-w-[1000px] grow flex-col items-center">
+            {foodCatergory}
+          </div>
+          <div className="mr-14 grow self-start p-10 sm:hidden md:hidden lg:block">
+            <CartSection />
+          </div>
         </div>
-        <div className="grow sm:hidden md:hidden lg:block self-start p-10 mr-14">
-          <CartSection />
-        </div>
+        <div className="min-h-[5rem] bg-quaternaryGrey"></div>
+        <OrderFooter />
       </div>
-      <div className="min-h-[5rem] bg-quaternaryGrey"></div>
-      <OrderFooter />
     </section>
   )
 }

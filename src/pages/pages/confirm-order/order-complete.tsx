@@ -1,13 +1,15 @@
-import { Navbar, OrderComplete } from '@/components'
+import { Navbar, OrderComplete, MobileNav } from '@/components'
+import { useMobileMenuIsOpen } from '@/hooks/hooksIndex'
 
 export default function OrderCompletePage() {
+  const mobileMenuIsOpen = useMobileMenuIsOpen()
+
   return (
     <>
       <title>Curry Club</title>
-      <Navbar />
-      <section className="flex min-h-screen justify-center items-start bg-quaternaryGrey md:bg-quaternaryGrey/25">
-        <OrderComplete />
-      </section>
+      {mobileMenuIsOpen ? <MobileNav /> : null}
+      {mobileMenuIsOpen ? null : <Navbar />}
+      {mobileMenuIsOpen ? null : <OrderComplete />}
     </>
   )
 }

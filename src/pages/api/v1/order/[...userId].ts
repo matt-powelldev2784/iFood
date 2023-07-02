@@ -31,6 +31,7 @@ const getUserOrders = async (req: NextApiRequest, res: NextApiResponse) => {
   const userOrders = await prisma.order.findMany({
     where: {
       userId: userId,
+      orderConfirmed: true,
     },
     include: {
       orderItems: {

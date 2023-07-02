@@ -1,7 +1,11 @@
 import { useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '@/redux/store/reduxHooks'
 import { setConfirmOrderState } from '@/redux/slices/cartSlice'
-import { confirmOrder, sendEmailConfirmation } from '@/redux/slices/ordersSlice'
+import {
+  confirmOrder,
+  sendEmailConfirmation,
+  setRequireOrdersFetchTrue,
+} from '@/redux/slices/ordersSlice'
 import Image from 'next/image'
 
 export const OrderComplete = () => {
@@ -22,6 +26,7 @@ export const OrderComplete = () => {
     if (confirmedOrderId) {
       dispatch(confirmOrder({ orderId: confirmedOrderId }))
       dispatch(sendEmailConfirmation({ orderId: confirmedOrderId }))
+      dispatch(setRequireOrdersFetchTrue())
     }
   }, [userId, confirmedOrderId, dispatch])
 

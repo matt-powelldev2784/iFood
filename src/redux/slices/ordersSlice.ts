@@ -8,6 +8,7 @@ export interface OrdersState {
   orders: TSOrderItem[]
   errors: ApiErrorMsg[] | string[] | null
   isLoading: boolean
+  requireOrdersFetch: boolean
 }
 
 export interface UserId {
@@ -22,6 +23,7 @@ const initialState: OrdersState = {
   orders: [],
   errors: null,
   isLoading: false,
+  requireOrdersFetch: true,
 }
 
 export const getUserOrders = createAsyncThunk(
@@ -79,6 +81,12 @@ export const ordersSlice = createSlice({
     resetOrdersState(state) {
       Object.assign(state, initialState)
     },
+    setRequireOrdersFetchTrue(state) {
+      state.requireOrdersFetch = true
+    },
+    setRequireOrdersFetchFalse(state) {
+      state.requireOrdersFetch = false
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -105,6 +113,10 @@ export const ordersSlice = createSlice({
 })
 
 export const selectOrdersSlice = (state: AppState) => state.orders
-export const { resetOrdersState } = ordersSlice.actions
+export const {
+  resetOrdersState,
+  setRequireOrdersFetchTrue,
+  setRequireOrdersFetchFalse,
+} = ordersSlice.actions
 
 export default ordersSlice.reducer

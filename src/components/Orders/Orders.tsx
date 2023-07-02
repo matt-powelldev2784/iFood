@@ -1,6 +1,9 @@
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '@/redux/store/reduxHooks'
-import { getUserOrders } from '@/redux/slices/ordersSlice'
+import {
+  getUserOrders,
+  setRequireOrdersFetchFalse,
+} from '@/redux/slices/ordersSlice'
 import { TSOrderItem, TSOrder } from '@/ts/interfaces'
 import { OrderItem } from './OrderItem'
 import { convertToReableDate } from '@/utils/convertToReableDate'
@@ -9,12 +12,17 @@ import { Loading, Error } from '@/components'
 
 export const Orders = () => {
   const dispatch = useAppDispatch()
-  const { orders, isLoading, errors } = useAppSelector((state) => state.orders)
+  const { orders, isLoading, errors, requireOrdersFetch } = useAppSelector(
+    (state) => state.orders
+  )
   const userId = useAppSelector((state) => state.user.id)
 
   useEffect(() => {
-    if (userId) dispatch(getUserOrders(userId))
-  }, [userId, dispatch])
+    if (userId && requireOrdersFetch) {
+      dispatch(getUserOrders(userId))
+      dispatch(setRequireOrdersFetchFalse())
+    }
+  }, [userId, dispatch, requireOrdersFetch])
 
   const orderItems = orders?.map((order: TSOrder) => {
     const { orderItems } = order
@@ -76,10 +84,12 @@ export const Orders = () => {
   )
 
   return (
-    <div className="shandow-lg relative m-8 flex max-w-[800px] flex-col items-center justify-center text-sm sm:w-11/12 md:w-[580px] md:text-base">
-      <Loading isLoadingState={isLoading} />
-      {!isLoading && orders.length === 0 ? noOrders : null}
-      {orders.length > 0 ? orderItems : null}
-    </div>
+    <section className="flex min-h-screen items-start justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
+      <div className="shandow-lg relative m-8 flex max-w-[800px] flex-col items-center justify-center text-sm sm:w-11/12 md:w-[580px] md:text-base">
+        <Loading isLoadingState={isLoading} />
+        {!isLoading && orders.length === 0 ? noOrders : null}
+        {orders.length > 0 ? orderItems : null}
+      </div>
+    </section>
   )
 }

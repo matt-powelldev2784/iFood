@@ -1,13 +1,14 @@
-import { Orders, Navbar } from '@/components'
+import { Orders, Navbar, MobileNav } from '@/components'
 import withAuth from '@/pages/withAuth'
+import { useMobileMenuIsOpen } from '@/hooks/hooksIndex'
 
 function OrdersPage() {
+  const mobileMenuIsOpen = useMobileMenuIsOpen()
   return (
     <>
-      <Navbar />
-      <div className="flex min-h-screen items-start justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
-        <Orders />
-      </div>
+      {mobileMenuIsOpen ? <MobileNav /> : null}
+      {mobileMenuIsOpen ? null : <Navbar />}
+      <Orders />
     </>
   )
 }

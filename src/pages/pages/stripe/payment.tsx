@@ -2,13 +2,15 @@ import React, { useState } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements } from '@stripe/react-stripe-js'
 import CheckoutForm from '../../../components/stripe/CheckoutForm'
-import { Navbar } from '@/components'
+import { Navbar, MobileNav } from '@/components'
 import { useAppSelector } from '@/redux/store/reduxHooks'
+import { useMobileMenuIsOpen } from '@/hooks/hooksIndex'
 
 //@ts-ignore
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
 export default function Payment() {
+  const mobileMenuIsOpen = useMobileMenuIsOpen()
   const [clientSecret, setClientSecret] = useState('')
   const { pendingOrderId } = useAppSelector((state) => state.cart)
 
@@ -38,10 +40,9 @@ export default function Payment() {
       {clientSecret && (
         //@ts-ignore
         <Elements options={options} stripe={stripePromise}>
-          <Navbar />
-          <section className="flex min-h-screen justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
-            <CheckoutForm />
-          </section>
+          {mobileMenuIsOpen ? <MobileNav /> : null}
+          {mobileMenuIsOpen ? null : <Navbar />}
+          {mobileMenuIsOpen ? null : <CheckoutForm />}
         </Elements>
       )}
     </section>

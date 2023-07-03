@@ -75,34 +75,40 @@ export default function CheckoutForm() {
   }
 
   return (
-    <form
-      id="payment-form"
-      onSubmit={handleSubmit}
-      className="flex h-[42rem] flex-col items-center rounded-3xl p-8 md:m-8 md:my-8 md:h-fit md:bg-quaternaryGrey md:shadow-lg"
-    >
-      <Image src="/icons/payment_pink.svg" width={125} height={125} alt="" />
-      <h1 className="pb-2 text-center text-3xl">PAYMENT</h1>
-      <div className="mb-4 w-full max-w-[280px] text-justify text-sm text-primaryPink">
-        This is a dummy payment page. Please use card number 4242 4242 4242 4242
-        with any future expiry date and any CVC number.
-      </div>
-      <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <Button
-        disabled={isLoading || !stripe || !elements}
-        id="submit"
-        type="submit"
-        optionalClassNames="text-lg w-full m-6"
-        text={`PAY NOW £${totalPrice.toFixed(2)}`}
+    <section className="flex min-h-screen justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
+      <form
+        id="payment-form"
+        onSubmit={handleSubmit}
+        className="flex h-[42rem] flex-col items-center rounded-3xl p-8 md:m-8 md:my-8 md:h-fit md:bg-quaternaryGrey md:shadow-lg"
       >
-        <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : `Pay now`}
-        </span>
-      </Button>
-      {message ? (
-        <div id="payment-message" className="text-red-500">
-          {message}
+        <Image src="/icons/payment_pink.svg" width={125} height={125} alt="" />
+        <h1 className="pb-2 text-center text-3xl">PAYMENT</h1>
+        <div className="mb-4 w-full max-w-[280px] text-justify text-sm text-primaryPink">
+          This is a dummy payment page. Please use card number 4242 4242 4242
+          4242 with any future expiry date and any CVC number.
         </div>
-      ) : null}
-    </form>
+        <PaymentElement id="payment-element" options={paymentElementOptions} />
+        <Button
+          disabled={isLoading || !stripe || !elements}
+          id="submit"
+          type="submit"
+          optionalClassNames="text-lg w-full m-6"
+          text={`PAY NOW £${totalPrice.toFixed(2)}`}
+        >
+          <span id="button-text">
+            {isLoading ? (
+              <div className="spinner" id="spinner"></div>
+            ) : (
+              `Pay now`
+            )}
+          </span>
+        </Button>
+        {message ? (
+          <div id="payment-message" className="text-red-500">
+            {message}
+          </div>
+        ) : null}
+      </form>
+    </section>
   )
 }

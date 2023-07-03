@@ -20,7 +20,12 @@ export default function SignOut({}) {
       <Navbar />
       <section className="flex min-h-screen justify-center bg-quaternaryGrey md:bg-quaternaryGrey/25">
         <article className="flex h-[20rem] max-w-[400px] flex-col items-center justify-center rounded-3xl p-8 sm:w-screen md:m-8 md:w-[400px] md:bg-quaternaryGrey md:shadow-lg">
-          <Image src="/icons/home_pink.svg" width={125} height={125} alt="" />
+          <Image
+            src="/icons/signout_pink.svg"
+            width={125}
+            height={125}
+            alt=""
+          />
           <h1 className="pb-5 text-3xl">SIGN OUT</h1>
           <div className="flex w-full flex-col items-center text-lg md:w-11/12">
             <Button

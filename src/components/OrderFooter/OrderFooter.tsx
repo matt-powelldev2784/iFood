@@ -21,8 +21,8 @@ export const OrderFooter = () => {
   }
 
   const orderItems = (
-    <div className="fixed lg:hidden w-screen min-w-[320px] bottom-0 left-0 flex flex-row justify-between items-center gap-2 bg-secondaryWhite text-secondaryWhite px-3 py-2 z-20">
-      <p className="bg-primaryPink w-[2rem] text-center md:mx-4">
+    <div className="fixed bottom-0 left-0 z-20 flex w-screen min-w-[320px] flex-row items-center justify-between gap-2 bg-quaternaryGrey px-3 py-2 text-secondaryWhite lg:hidden">
+      <p className="w-[2rem] bg-primaryPink text-center md:mx-4">
         {numOfOrderItems}
       </p>
       <p onClick={onOrderClick} className="bg-primaryPink p-2">

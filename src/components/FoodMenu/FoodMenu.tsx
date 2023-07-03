@@ -39,9 +39,9 @@ export const FoodMenu = ({ menuItems }: TSFoodMenuItems) => {
   return (
     <section className="top-[3rem] min-h-screen md:top-[4rem]">
       <div className="flex w-screen min-w-[320px] flex-col items-center justify-center bg-quaternaryGrey/25">
-        <nav className="w-full bg-quaternaryGrey p-1 text-center">
+        {/* <nav className="w-full bg-quaternaryGrey p-1 text-center">
           {categoryButtons}
-        </nav>
+        </nav> */}
         <div className="flex w-full lg:gap-5">
           <div className="flex max-w-[1000px] grow flex-col items-center">
             {foodCatergory}

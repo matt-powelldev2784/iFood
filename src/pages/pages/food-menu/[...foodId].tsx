@@ -15,7 +15,7 @@ export default function FoodItemPage(foodItem: TSFoodItemResponse) {
       <title>Curry Club</title>
       <Navbar />
       <section className="flex min-h-screen items-start justify-center bg-quaternaryGrey/25">
-        {foodItem && <FoodPageItem foodItem={foodItemObj} />}
+        <FoodPageItem foodItem={foodItemObj} />
       </section>
     </>
   )

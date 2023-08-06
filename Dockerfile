@@ -7,14 +7,14 @@ WORKDIR /usr/src/app
 # Copy the package.json and package-lock.json (if available) to the container
 COPY package*.json ./
 
-RUN npx prisma generate --schema=prisma/schema.prisma
+
 
 # Install the dependencies in the container
-RUN npm install 
+
 
 # Copy the rest of the app to the container
 COPY . .
-
+RUN npx prisma generate --schema=./prisma/schema.prisma
 # Build the Next.js app
 RUN npm run build
 
